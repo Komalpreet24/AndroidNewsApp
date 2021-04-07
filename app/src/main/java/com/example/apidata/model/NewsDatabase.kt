@@ -1,4 +1,4 @@
-package com.example.apidata
+package com.example.apidata.model
 
 import android.content.Context
 import androidx.room.Database
@@ -14,34 +14,10 @@ abstract class NewsDatabase : RoomDatabase() {
     abstract fun newsDao(): NewsDao
 
 
-
-    private class NewsDatabaseCallback() : RoomDatabase.Callback() {
-
-        override fun onCreate(db: SupportSQLiteDatabase) {
-            super.onCreate(db)
-            INSTANCE?.let { database ->
-                    var newsDao = database.newsDao()
-
-                    // Delete all content here.
-                    newsDao.deleteAll()
-
-//                    // Add sample words.
-//                    var word = Article("Hello")
-//                    wordDao.insert(word)
-//                    word = Word("World!")
-//                    wordDao.insert(word)
-
-            }
-        }
-    }
-
-
-
-
     companion object {
         // Singleton prevents multiple instances of database opening at the
         // same time.
-        private var INSTANCE: NewsDatabase? = null
+         @Volatile private var INSTANCE: NewsDatabase? = null
 
         fun getDatabase(context: Context): NewsDatabase {
             // if the INSTANCE is not null, then return it,

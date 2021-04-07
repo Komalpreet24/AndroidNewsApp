@@ -15,6 +15,7 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
+import com.example.apidata.model.Article
 
 class NewsAdapter(val context: Context, val articles: List<Article>) :
     RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {

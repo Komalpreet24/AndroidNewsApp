@@ -1,6 +1,7 @@
 package com.example.apidata
 
 import android.app.Application
+import com.example.apidata.model.NewsDatabase
 
 
 class NewsApplication : Application() {

@@ -14,6 +14,7 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
+import com.example.apidata.model.ApiService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

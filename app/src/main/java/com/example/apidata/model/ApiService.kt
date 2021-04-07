@@ -1,5 +1,6 @@
-package com.example.apidata
+package com.example.apidata.model
 
+import com.example.apidata.ApiData
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
@@ -13,7 +14,7 @@ const val API_KEY = "73f8be5456a24ab589075fcfe299a763"
 
 interface ApiServiceInterface {
 
-    @GET("v2/top-headlines?apiKey=${API_KEY}")
+    @GET("v2/top-headlines?apiKey=$API_KEY")
     fun getHeadlines(@Query("country") country: String, @Query("page") page: Int): Call<ApiData>
 }
 
@@ -26,10 +27,14 @@ interface ApiServiceInterface {
         init{
 
             logging.setLevel(HttpLoggingInterceptor.Level.BODY)
-            httpClient.addInterceptor(logging)
+            httpClient.addInterceptor(
+                logging
+            )
 
-            val retrofit = Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).client(httpClient.build()).build()
-            apiServiceInstance = retrofit.create(ApiServiceInterface::class.java)
+            val retrofit = Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).client(
+                httpClient.build()).build()
+            apiServiceInstance = retrofit.create(
+                ApiServiceInterface::class.java)
 
         }
 
